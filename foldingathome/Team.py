@@ -1,9 +1,11 @@
 import requests
 
+
 def total_teams():
     r = requests.get(f'https://stats.foldingathome.org/api/team/0')
     team = r.json()
     return team["total_teams"]
+
 
 class Team:
     def __init__(self, team=0):
@@ -58,6 +60,9 @@ class Team:
             "team": team,
             "id": id
         }
+
+    def name(self):
+        return self.team["name"]
 
     def score(self):
         return self.team["credit"]
