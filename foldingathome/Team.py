@@ -1,10 +1,7 @@
 import requests
 
 
-def total_teams():
-    r = requests.get(f'https://stats.foldingathome.org/api/team/0')
-    team = r.json()
-    return team["total_teams"]
+
 
 
 class Team:
@@ -12,6 +9,9 @@ class Team:
         r = requests.get(f'https://stats.foldingathome.org/api/team/{team}')
         self.team = r.json()
         self.donors = r.json()["donors"]
+
+    def total_teams():
+        return self.team["total_teams"]
 
     def highest_scorer(self):
         donors = self.donors
