@@ -7,6 +7,9 @@ class Team:
         self.team = r.json()
         self.donors = r.json()["donors"]
 
+    def total_teams():
+        return self.team["total_teams"]
+
     def highest_scorer(self):
         donors = self.donors
         users_and_scores = {}
