@@ -9,7 +9,7 @@ setup(
     author="leet_hakker",
     author_email="leet_haker@cyber-wizard.com",
     url="https://github.com/thenamesweretakenalready/foldingathome/",
-    download_url="https://github.com/thenamesweretakenalready/foldingathome/archive/v0.1.3.tar.gz",
+    download_url="https://github.com/thenamesweretakenalready/foldingathome/archive/v0.1.2.tar.gz",
     keywords=["API", "Python", "Folding@Home"],
     install_requires=["requests"],
     classifiers=[
