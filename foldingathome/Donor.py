@@ -14,17 +14,15 @@ class Donor:
                 found = True
         if not found and team == 0:
             raise Exception(
-                f"\n\nNo user could be fou  nd with that name: {donorname}.\n This could be due to the user not being on the leaderboard for the default team, as the api only displays the top 1000 members of a team."
+                f"\n\nNo user could be found with that name: {donorname}.\n This could be due to the user not being on the leaderboard for the default team, as the api only displays the top 1000 members of a team."
             )
-            return
         elif not found:
             raise Exception(f"\n\nNo user could be found with that name: {donorname}")
-            return
 
         self.name = self.donor["name"]
         self.id = self.donor["id"]
-        self.score = self.donor["score"]
-        self.work_units = self.donor["work_units"]
+        self.score = self.donor["credit"]
+        self.work_units = self.donor["wus"]
         self.team_id = self.team["team"]
 
     @property
