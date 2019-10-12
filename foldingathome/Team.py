@@ -6,9 +6,15 @@ class Team:
         r = requests.get(f"https://stats.foldingathome.org/api/team/{team}")
         self.team = r.json()
         self.donors = r.json()["donors"]
-
-    def total_teams():
-        return self.team["total_teams"]
+        self.total_teams = self.team["total_teams"]
+        self.name = self.team["name"]
+        self.score = self.team["credit"]
+        self.work_units = self.team["wus"]
+        self.total_donors = len(self.team["donors"])
+        self.total_teams = self.team["total_teams"]
+        self.rank = self.team["rank"]
+        self.logo = self.team["logo"]
+        self.stats = self.team
 
     def highest_scorer(self):
         donors = self.donors
@@ -57,27 +63,3 @@ class Team:
             "team": team,
             "id": id,
         }
-
-    def name(self):
-        return self.team["name"]
-
-    def score(self):
-        return self.team["credit"]
-
-    def work_units(self):
-        return self.team["wus"]
-
-    def total_donors(self):
-        return len(self.team["donors"])
-
-    def total_teams():
-        return self.team["total_teams"]
-
-    def rank(self):
-        return self.team["rank"]
-
-    def logo(self):
-        return self.team["logo"]
-
-    def stats(self):
-        return self.team
