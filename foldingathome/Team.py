@@ -16,6 +16,7 @@ class Team:
         self.logo = self.team["logo"]
         self.stats = self.team
 
+    @property
     def highest_scorer(self):
         donors = self.donors
         users_and_scores = {}
@@ -40,6 +41,7 @@ class Team:
             "id": id,
         }
 
+    @property
     def most_wus(self):
         donors = self.donors
         users_and_scores = {}

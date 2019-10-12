@@ -27,6 +27,7 @@ class Donor:
         self.work_units = self.donor["work_units"]
         self.team_id = self.team["team"]
 
+    @property
     def rank(self):
         donors = self.team["donors"]
         scores = []
@@ -36,4 +37,4 @@ class Donor:
         for i in scores:
             order.append(max(scores))
             scores.pop(scores.index(max(scores)))
-            return order.index(self.donor["credit"]) + 1
+        return order.index(self.donor["credit"]) + 1
