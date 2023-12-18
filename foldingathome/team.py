@@ -1,17 +1,16 @@
 from typing import List, Tuple
 import requests
 
+from foldingathome.donor import ShallowDonor
 
-class TeamMember:
+
+class TeamMember(ShallowDonor):
     def __init__(self, member_row):
-        self.name = member_row[0]
-        self.id = member_row[1]
+        super().__init__(member_row[0], member_row[1], member_row[3], member_row[4])
         self.rank = member_row[2]
-        self.score = member_row[3]
-        self.wus = member_row[4]
 
 
-class Team:
+class Team(ShallowDonor):
     def __init__(self, team: int):
         r = requests.get(f"https://api2.foldingathome.org/team/{team}")
 
@@ -19,13 +18,13 @@ class Team:
             raise requests.RequestException(r.content)
 
         raw_data = r.json()
-        self.id: int = raw_data["id"]
-        self.name: str = raw_data["name"]
+
+        super().__init__(
+            raw_data["name"], raw_data["id"], raw_data["score"], raw_data["wus"]
+        )
         self.founder: str = raw_data["founder"]
         self.url: str = raw_data["url"]
         self.logo: str = raw_data["logo"]
-        self.score: int = raw_data["score"]
-        self.wus: int = raw_data["wus"]
         self.rank: int = raw_data["rank"]
 
     def members_raw(self) -> List[Tuple[str, int, int, int, int]]:

@@ -12,7 +12,15 @@ def get_team_from_team_list(name, id, team_list, team_id):
     raise TeamRankException(f"{name} ({id}) has not contributed to team ID {team_id}.")
 
 
-class Donor:
+class ShallowDonor:
+    def __init__(self, name: str, id: int, score: int, wus: int):
+        self.name = name
+        self.id = id
+        self.score = score
+        self.work_units = wus
+
+
+class Donor(ShallowDonor):
     def __init__(self, donor_id):
         self.id = donor_id
         r = requests.get(f"https://api2.foldingathome.org/uid/{self.id}")
@@ -21,9 +29,8 @@ class Donor:
 
         raw_data = r.json()
 
-        self.name: str = raw_data["name"]
-        self.score: int = raw_data["score"]
-        self.work_units: int = raw_data["wus"]
+        super().__init__(raw_data["name"], donor_id, raw_data["score"], raw_data["wus"])
+
         self.rank: int = raw_data["rank"]
         self.active_50: int = raw_data["active_50"]
         self.active_7: int = raw_data["active_7"]
