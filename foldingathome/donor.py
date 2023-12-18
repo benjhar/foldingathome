@@ -13,7 +13,7 @@ def get_team_from_team_list(name, id, team_list, team_id):
 
 
 class Donor:
-    def __init__(self, donor_id: int = 0):
+    def __init__(self, donor_id):
         self.id = donor_id
         r = requests.get(f"https://api2.foldingathome.org/uid/{self.id}")
 
