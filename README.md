@@ -2,4 +2,6 @@
 
 [![Downloads](https://pepy.tech/badge/jokeapi)](https://pepy.tech/downloads/foldingathome)
 
-A Python wrapper for the Folding@Home api
+This is a Python wrapper for Folding@Home's statistics APIs.
+
+With this wrapper, you can access team and donor information.
