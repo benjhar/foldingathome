@@ -31,25 +31,6 @@ class Donor:
         self.active_7: int = raw_data["active_7"]
         self.teams: dict = raw_data["teams"]
 
-    def __repr__(self) -> str:
-        return (
-            "{"
-            + f"""
-    id: {self.id}
-    name: {self.name}
-    score: {self.score}
-    work_units: {self.work_units}
-    rank: {self.rank}
-    active_50: {self.active_50}
-    active_7: {self.active_7}
-    teams: {self.teams}
-"""
-            + "}"
-        )
-
-    def __str__(self) -> str:
-        return self.__repr__()
-
     def team_score(self, team_id: int) -> int:
         team = get_team_from_team_list(self.name, self.id, self.teams, team_id)
         return team["score"]
