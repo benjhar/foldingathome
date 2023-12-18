@@ -28,25 +28,6 @@ class Team:
         self.wus: int = raw_data["wus"]
         self.rank: int = raw_data["rank"]
 
-    def __repr__(self) -> str:
-        return (
-            "{"
-            + f"""
-id: {self.id}
-name: {self.name}
-founder: {self.founder}
-url: {self.url}
-logo: {self.logo}
-score: {self.score}
-wus: {self.wus}
-rank: {self.rank}
-"""
-            + "}"
-        )
-
-    def __str__(self) -> str:
-        return self.__repr__()
-
     def members_raw(self) -> List[Tuple[str, int, int, int, int]]:
         r = requests.get(f"https://api2.foldingathome.org/team/{self.id}/members")
 
