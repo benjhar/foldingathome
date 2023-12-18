@@ -19,8 +19,7 @@ class Donor:
         self.id = donor_id
         r = requests.get(f"https://api2.foldingathome.org/uid/{self.id}")
 
-        if r.status_code != 200:
-            raise requests.RequestException(r.content)
+        r.raise_for_status()
 
         raw_data = r.json()
 
