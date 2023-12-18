@@ -1,7 +1,5 @@
 import requests
 
-from foldingathome.Team import Team
-
 
 class TeamRankException(RuntimeError):
     """There was an error getting the user's rank"""
